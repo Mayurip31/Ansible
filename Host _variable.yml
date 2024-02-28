@@ -1,0 +1,10 @@
+---
+- name: Simple Playbook with Host Variable
+  hosts: all
+  vars:
+    message: "Hello from Ansible!"
+
+  tasks:
+    - name: Display Message
+      debug:
+        var: message
