@@ -1,0 +1,11 @@
+- name: Playbook for Prompt Variable
+  hosts: all
+
+  vars_prompt:
+    - name: user_name
+      prompt: "Enter your name"
+
+  tasks:
+    - name: Display Screen
+      debug:
+        msg: {{ user_name }}
