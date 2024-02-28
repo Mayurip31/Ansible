@@ -8,4 +8,4 @@
   tasks:
     - name: Display Screen
       debug:
-        msg: {{ user_name }}
+        msg: "{{ user_name }}"
