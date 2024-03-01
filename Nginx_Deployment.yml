@@ -6,7 +6,7 @@
   - name: Install nginx
     apt: 
       name: nginx
-      state: present
+      state: latest
   - name: start nginx
     service: 
       name: nginx
@@ -14,7 +14,7 @@
   - name: start enable
     service: 
       name: nginx
-      state: enabled
+      state: restarted
   - name: Create file
     file:
         path: /var/www/html/index.html
@@ -23,7 +23,4 @@
     lineinfile:
         path: /var/www/html/index.html
         line: "hello"
-  - name: start enable
-    service: 
-      name: nginx
-      state: restarted
+  
