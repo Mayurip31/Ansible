@@ -1,0 +1,30 @@
+---
+- name: Running all git commands using playbook
+  hosts: all
+  vars:
+   git_url: 'git@github.com:Mayurip31/Ansible.git'
+   git_key: "/home/ubuntu/.ssh/id_rsa.pub"
+
+  tasks:
+  - name: git pull
+    include_role:
+      name: Pulling the file on git
+      tasks_from: pull
+
+  - name: create file in repo
+    copy:
+      dest: /home/ubuntu/git/Ansible/time.yml
+      content: "{{ ansible_date_time | to_nice_yaml}}"
+
+  - name: git add
+    include_role:
+      name: Adding the file on git
+      tasks_from: add
+  
+  - name: Commit changes
+    command: git commit -m "{{my commit}}"
+
+  - name: git push
+    include_role:
+      name: pushing the file on git
+      tasks_from: push
